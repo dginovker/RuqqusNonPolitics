@@ -1,4 +1,5 @@
 const Ruqqus = require("ruqqus-js");
+require('dotenv').config()
  
 // Create a new Client instance
 const client = new Ruqqus.Client({

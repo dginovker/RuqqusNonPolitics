@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "dotenv": "^8.2.0",
     "ruqqus-js": "^1.6.0"
   }
 }
