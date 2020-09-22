@@ -1,26 +1,27 @@
 const Ruqqus = require("ruqqus-js");
-require('dotenv').config()
- 
+const guildDetails = require("./guildDetails");
+require("dotenv").config();
+
 // Create a new Client instance
-const client = new Ruqqus.Client({
-  id: "CLIENT_ID",
-  token: "CLIENT_SECRET",
-  code: "AUTHCODE"
+export const client = new Ruqqus.Client({
+  id: process.env.ID,
+  token: process.env.CLIENT_SECRET,
+  code: process.env.AUTHCODE,
 });
- 
+
 // Login event
 client.on("login", async () => {
-  console.log(client.guilds.get("RuqqusAPI"));
-
-  console.log(Client.guilds.get("RuqqusAPI").fetchPosts(sort="new", limit="1", page=1)); // sort=top&t=day
+  guildDetails();
 });
- 
+
 // Post event
-client.on("post", (post, data) => { 
+client.on("post", (post, data) => {
+  console.log("Post event!");
   console.log(data);
 });
- 
+
 // Comment event
 client.on("comment", (comment, data) => {
+  console.log("Comment event!");
   console.log(data);
 });
