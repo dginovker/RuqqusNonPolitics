@@ -1,4 +1,4 @@
-const client = require("./index").client;
+import { client } from "./index.js";
 
 function getTopPost(guildName) {
   console.log(guildName);

@@ -1,6 +1,7 @@
-const Ruqqus = require("ruqqus-js");
-const guildDetails = require("./guildDetails");
-require("dotenv").config();
+import Ruqqus from "ruqqus-js";
+import guildDetails from "./guildDetails.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 // Create a new Client instance
 export const client = new Ruqqus.Client({
