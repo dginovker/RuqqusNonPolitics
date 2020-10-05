@@ -1,22 +1,18 @@
+import { readFileSync } from "fs";
 import { client } from "./index.js";
 
 function getTopPost(guildName) {
-  console.log(guildName);
-  console.log(client.guilds.get(guildName));
-  console.log(
-    client.guilds
-      .get(guildName)
-      .fetchPosts((sort = "new"), (limit = "1"), (page = 1))
-  ); // sort=top&t=day
+  client.guilds.get(guildName).fetchPosts("new", 24, 1).then(res => {
+    console.log(res);
+  });
 }
 
-export default () => {
-  require("fs")
-    .readFileSync("guildlist.txt", "utf-8")
+export default function guildDetails() {
+  readFileSync("guildlist.txt", "utf-8")
     .split(/\r?\n/)
     .forEach((line) => {
       if (!line.startsWith("#")) {
         getTopPost(line.split("+")[1]);
       }
     });
-};
+}
